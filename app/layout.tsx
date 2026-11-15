@@ -16,7 +16,32 @@ export const metadata: Metadata = {
     template: '%s | Christopher Peter Jen Initiative',
   },
   description: siteDescription,
-  openGraph: { title: siteName, description: siteDescription, type: 'website' },
+  icons: {
+    icon: [
+      { url: '/images/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [{ url: '/images/apple-touch-icon.png', sizes: '180x180' }],
+  },
+  openGraph: {
+    title: siteName,
+    description: siteDescription,
+    type: 'website',
+    images: [
+      {
+        url: '/images/foundation-badge.png',
+        width: 1254,
+        height: 1254,
+        alt: siteName,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: siteName,
+    description: siteDescription,
+    images: ['/images/foundation-badge.png'],
+  },
   robots: { index: true, follow: true },
 };
 export default function RootLayout({
