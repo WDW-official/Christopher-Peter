@@ -1,6 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { X, ZoomIn, ExternalLink } from 'lucide-react';
+import {
+  X,
+  ZoomIn,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 import { galleries, type GalleryItem } from '@/lib/site';
 import { displayPhoto } from '@/lib/media';
 
@@ -16,8 +22,10 @@ export function GalleryGrid({
   const [selected, setSelected] = useState<GalleryItem | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement | null>(null);
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+  const isOpen = selected !== null;
   useEffect(() => {
-    if (!selected) return;
+    if (!isOpen) return;
     const modal = dialog.current;
     modal?.showModal();
     const previousOverflow = document.body.style.overflow;
@@ -27,11 +35,19 @@ export function GalleryGrid({
       document.body.style.overflow = previousOverflow;
       trigger.current?.focus();
     };
-  }, [selected]);
+  }, [isOpen]);
   const visible =
     filter === 'All'
       ? galleries
       : galleries.filter((g) => g.category === filter);
+  const selectedIndex = selected ? visible.indexOf(selected) : -1;
+  const navigate = (direction: number) => {
+    setSelected((current) => {
+      if (!current || visible.length < 2) return current;
+      const index = visible.indexOf(current);
+      return visible[(index + direction + visible.length) % visible.length];
+    });
+  };
   return (
     <>
       <div
@@ -101,6 +117,14 @@ export function GalleryGrid({
         className="gallery-dialog"
         onCancel={() => setSelected(null)}
         onClose={() => setSelected(null)}
+        onKeyDown={(event) => {
+          if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+            return;
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigate(event.key === 'ArrowLeft' ? -1 : 1);
+          }
+        }}
         onClick={(event) => {
           if (event.target === event.currentTarget) setSelected(null);
         }}
@@ -121,11 +145,67 @@ export function GalleryGrid({
                 Close <X size={16} />
               </button>
             </div>
-            <img
-              className="mx-auto max-h-[60dvh] max-w-full object-contain"
-              alt={selected.caption}
-              src={displayPhoto(selected.image)}
-            />
+            <div
+              style={{ touchAction: 'pan-y pinch-zoom' }}
+              onTouchStart={(event) => {
+                const touch = event.touches[0];
+                swipeStart.current =
+                  event.touches.length === 1
+                    ? { x: touch.clientX, y: touch.clientY }
+                    : null;
+              }}
+              onTouchCancel={() => {
+                swipeStart.current = null;
+              }}
+              onTouchEnd={(event) => {
+                const start = swipeStart.current;
+                swipeStart.current = null;
+                if (!start || event.touches.length > 0) return;
+                const touch = event.changedTouches[0];
+                const dx = touch.clientX - start.x;
+                const dy = touch.clientY - start.y;
+                if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                  navigate(dx < 0 ? 1 : -1);
+                }
+              }}
+            >
+              <img
+                className="mx-auto max-h-[60dvh] max-w-full select-none object-contain"
+                alt={selected.caption}
+                src={displayPhoto(selected.image)}
+                draggable={false}
+              />
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                aria-label="Previous image"
+                disabled={visible.length < 2}
+                onClick={() => navigate(-1)}
+                className="flex min-h-11 min-w-11 items-center justify-center rounded bg-white text-navy disabled:opacity-40"
+              >
+                <ChevronLeft aria-hidden="true" size={22} />
+              </button>
+              <p
+                role="status"
+                aria-atomic="true"
+                className="text-center text-sm text-slate-200"
+              >
+                {selectedIndex + 1} of {visible.length}
+                <span className="mt-1 block text-xs">
+                  Swipe or use the arrows
+                </span>
+              </p>
+              <button
+                type="button"
+                aria-label="Next image"
+                disabled={visible.length < 2}
+                onClick={() => navigate(1)}
+                className="flex min-h-11 min-w-11 items-center justify-center rounded bg-white text-navy disabled:opacity-40"
+              >
+                <ChevronRight aria-hidden="true" size={22} />
+              </button>
+            </div>
             <p
               id="gallery-image-caption"
               className="mt-4 text-sm leading-6 text-white"
