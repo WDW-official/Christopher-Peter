@@ -11,11 +11,11 @@ export function InitiativeCard({
     <Link
       data-reveal
       href={`/our-programs#${item.id}`}
-      className="glass-card interactive-card group flex h-full flex-col"
+      className="initiative-card interactive-card group flex h-full flex-col overflow-hidden rounded-[20px] bg-navy text-white"
     >
       {item.image ? (
         <div
-          className={`aspect-[16/10] overflow-hidden lg:aspect-auto lg:h-48 ${item.credit ? 'bg-cream p-2' : ''}`}
+          className={`aspect-[16/10] overflow-hidden bg-white ${item.credit ? 'p-2' : ''}`}
         >
           <img
             src={item.image}
@@ -31,14 +31,18 @@ export function InitiativeCard({
           <HandHeart size={62} strokeWidth={1.5} aria-hidden="true" />
         </div>
       )}
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="flex items-start justify-between gap-2 text-lg font-extrabold">
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="flex items-start justify-between gap-4 text-xl font-extrabold leading-snug">
           {item.title}
-          <ArrowUpRight size={18} className="shrink-0 text-bright" />
+          <ArrowUpRight
+            size={20}
+            className="mt-1 shrink-0"
+            aria-hidden="true"
+          />
         </h3>
-        <p className="mt-2 text-sm leading-6 text-slate-600">{item.desc}</p>
+        <p className="mt-4 text-base leading-7 text-slate-100">{item.desc}</p>
         {item.credit && (
-          <p className="mt-4 border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
+          <p className="mt-4 border-t border-white/35 pt-3 text-sm leading-6 text-slate-200">
             {item.credit}
           </p>
         )}

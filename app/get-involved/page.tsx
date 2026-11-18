@@ -56,14 +56,24 @@ export default function Page() {
               data-reveal
               id={id}
               key={id}
-              className="glass-card scroll-mt-28 p-6"
+              className="initiative-card flex min-w-0 scroll-mt-28 flex-col rounded-[20px] bg-navy p-6 text-white sm:p-8"
             >
-              <Icon size={37} className="text-leaf" />
-              <h3 className="mt-5 text-xl font-black">{name}</h3>
-              <p className="mt-3 lg:min-h-20 text-sm leading-6 text-slate-600">
+              <Icon
+                size={37}
+                strokeWidth={2}
+                className="shrink-0 text-[#B8E986]"
+                aria-hidden="true"
+              />
+              <h3 className="mt-6 text-[22px] font-black leading-snug">
+                {name}
+              </h3>
+              <p className="mb-6 mt-3 text-base leading-7 text-slate-100">
                 {copy}
               </p>
-              <SupportLink href={href} className="btn btn-gold mt-5 w-full">
+              <SupportLink
+                href={href}
+                className="btn btn-gold mt-auto w-full max-w-60 !rounded-xl !text-base"
+              >
                 {cta}
               </SupportLink>
             </div>

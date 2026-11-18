@@ -17,10 +17,11 @@ export default async function Page({
         <p className="eyebrow text-leaf">A closer look at learning</p>
         <h2 className="section-title mt-3">Skills, people and possibilities</h2>
         <p className="mt-5 max-w-3xl leading-8 text-slate-600">
-          Explore quantity surveying, tie-dye, solar-panel demonstrations and
-          indoor workshop photographs, alongside the Photo Code Initiative’s
-          historical newsletter archive. Select a photograph to see the full
-          image and its caption.
+          Explore quantity surveying, building construction, knitting, tie-dye,
+          tiling and decorative work, solar-panel demonstrations and indoor
+          workshops, alongside the Photo Code Initiative’s historical newsletter
+          archive. Select a photograph to open the viewer, then swipe left or
+          right to browse the images in that category.
         </p>
         <p className="mb-8 mt-4 max-w-3xl border-l-4 border-gold pl-4 text-sm leading-6 text-slate-600">
           Billiri archive images document the Nigerian Correctional Service’s

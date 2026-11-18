@@ -209,6 +209,12 @@ button:disabled {
     border-color 0.28s ease,
     transform 0.28s var(--ease-out);
 }
+.initiative-card {
+  box-shadow: 0 8px 28px rgba(1, 21, 74, 0.07);
+}
+.initiative-card:hover {
+  box-shadow: 0 12px 32px rgba(1, 21, 74, 0.16);
+}
 .image-cover {
   width: 100%;
   height: 100%;

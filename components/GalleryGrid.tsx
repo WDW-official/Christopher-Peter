@@ -7,10 +7,10 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
-import { galleries, type GalleryItem } from '@/lib/site';
+import { galleries, galleryCategories, type GalleryItem } from '@/lib/site';
 import { displayPhoto } from '@/lib/media';
 
-const categories = ['All', 'Training', 'Workshops', 'Solar', 'Billiri Archive'];
+const categories: readonly string[] = galleryCategories;
 export function GalleryGrid({
   initialCategory = 'All',
 }: {
@@ -80,7 +80,7 @@ export function GalleryGrid({
               setSelected(item);
             }}
             aria-label={`View ${item.title}`}
-            className="glass-card interactive-card group h-full cursor-pointer text-left"
+            className="initiative-card interactive-card group h-full cursor-pointer overflow-hidden rounded-[20px] bg-navy text-left text-white"
           >
             <div className="gallery-photo relative aspect-[4/3] overflow-hidden sm:aspect-auto sm:h-60 bg-slate-100">
               <img
@@ -96,13 +96,13 @@ export function GalleryGrid({
               />
             </div>
             <div className="p-5">
-              <p className="eyebrow mb-2 text-leaf">{item.category}</p>
+              <p className="eyebrow mb-2 text-gold">{item.category}</p>
               <h3 className="font-extrabold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
+              <p className="mt-3 text-base leading-7 text-slate-100">
                 {item.caption}
               </p>
               {item.credit && (
-                <p className="mt-3 border-t border-slate-100 pt-3 text-xs leading-5 text-slate-500">
+                <p className="mt-4 border-t border-white/35 pt-3 text-sm leading-6 text-slate-200">
                   {item.credit}
                 </p>
               )}

@@ -8,20 +8,23 @@ export const metadata = { title: 'Our Initiatives' };
 const trainingProfiles = [
   {
     title: 'Quantity Surveying',
-    image: photos.surveying6,
+    category: 'Training',
+    image: photos.surveying9,
     caption:
-      'A participant stands beside a whiteboard listing quantity surveying terms.',
+      'Presenters introduce surveying equipment beside an outdoor classroom whiteboard.',
     text: 'Before a building job can be priced, the work has to be described and measured. The training session introduces quantity surveying terms learners may encounter when reading building documents and recording quantities for a job.',
   },
   {
     title: 'Tie-Dye',
-    image: photos.tieDye3,
+    category: 'Tie-Dye',
+    image: photos.tieDye4,
     caption:
-      'Participants stand beside a display of brightly patterned tie-dye shirts.',
+      'Colourful patterned garments are displayed along a fence after tie-dye work.',
     text: 'Learners use folds and ties to control where dye reaches fabric. Different ways of folding and tying create bands of colour and patterns that repeat across the cloth.',
   },
   {
     title: 'Solar Panels',
+    category: 'Solar',
     image: photos.solar1,
     caption:
       'A demonstrator holds a meter beside the connections on the back of a solar panel.',
@@ -29,10 +32,33 @@ const trainingProfiles = [
   },
   {
     title: 'Indoor Workshop',
-    image: photos.workshop2,
+    category: 'Workshops',
+    image: photos.workshop4,
     caption:
-      'Participants watch a presenter beside a portrait drawing and whiteboard sketches.',
-    text: 'Participants gather for an indoor workshop where a portrait drawing and whiteboard sketches are on display. The group sits close to the presenter and the material being discussed.',
+      'Participants gather around a presenter during an indoor workshop.',
+    text: 'Group workshops give participants a place to listen, ask questions and share what they are learning. Classroom sessions complement practical work with tools and materials.',
+  },
+  {
+    title: 'Building Construction',
+    category: 'Construction',
+    image: photos.construction4,
+    caption: 'Learners and instructors stand beside a block foundation layout.',
+    text: 'From reading a plan to setting out a foundation, construction practice connects classroom learning with work on site. Learners work together with blocks, measuring tools and string lines.',
+  },
+  {
+    title: 'Knitting',
+    category: 'Knitting',
+    image: photos.knitting1,
+    caption: 'Learners practise using a knitting machine with supervision.',
+    text: 'Machine knitting brings together yarn, tension and repeated movements. Supervised practice helps learners become familiar with the equipment and the fabric it produces.',
+  },
+  {
+    title: 'Tiling and Decorative Work',
+    category: 'Tiling & Decorative',
+    image: photos.tiling3,
+    caption:
+      'Participants in safety vests and hard hats attend a training session.',
+    text: 'The construction skills training event brings participants and presenters together to discuss tiling and decorative work. Explore the gallery for photographs of the session and its speakers.',
   },
 ];
 const tradeProfiles = [
@@ -134,31 +160,30 @@ export default function Page() {
               data-reveal
               key={item.id}
               id={item.id}
-              className={`grid scroll-mt-28 items-center gap-6 md:gap-9 ${item.image ? 'md:grid-cols-2' : 'rounded-2xl border-l-4 border-gold bg-cream p-6 sm:p-10'}`}
+              className="initiative-card grid scroll-mt-28 overflow-hidden rounded-[20px] bg-navy text-white md:grid-cols-2"
             >
               {item.image && (
-                <figure className={i % 2 ? 'md:order-2' : ''}>
+                <figure
+                  className={`flex h-full items-center bg-white ${i % 2 ? 'md:order-2' : ''}`}
+                >
                   <img
                     src={item.image}
                     width={1536}
                     height={item.imageHeight}
                     alt={item.imageAlt}
                     loading="lazy"
-                    className={`w-full rounded-xl ${item.credit ? 'h-auto bg-cream object-contain' : 'aspect-[4/3] object-cover md:aspect-auto md:h-80'}`}
+                    className={`w-full ${item.credit ? 'h-auto object-contain' : 'aspect-[16/10] object-cover md:aspect-auto md:h-full'}`}
                   />
-                  {item.credit && (
-                    <figcaption className="mt-3 text-xs leading-5 text-slate-500">
-                      {item.credit}
-                    </figcaption>
-                  )}
                 </figure>
               )}
-              <div className="max-w-3xl">
-                <p className="eyebrow text-leaf">Initiative 0{i + 1}</p>
-                <h3 className="initiative-title mt-3 font-black">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-8 text-slate-700">{item.body}</p>
+              <div className="max-w-3xl p-6 sm:p-8">
+                <h3 className="initiative-title font-black">{item.title}</h3>
+                <p className="mt-4 leading-8 text-slate-100">{item.body}</p>
+                {item.credit && (
+                  <p className="mt-5 border-t border-white/35 pt-4 text-sm leading-6 text-slate-200">
+                    {item.credit}
+                  </p>
+                )}
                 <SupportLink
                   href={`/donate?purpose=${item.purpose}`}
                   className="btn btn-gold mt-6"
@@ -174,9 +199,13 @@ export default function Page() {
         <div className="container-wrap">
           <p className="eyebrow text-leaf">Learning in practice</p>
           <h2 className="section-title mt-3">Training photo stories</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {trainingProfiles.map((item) => (
-              <article data-reveal key={item.title} className="glass-card">
+              <article
+                data-reveal
+                key={item.title}
+                className="initiative-card flex flex-col overflow-hidden rounded-[20px] bg-navy text-white"
+              >
                 <figure>
                   <img
                     src={displayPhoto(item.image)}
@@ -184,15 +213,23 @@ export default function Page() {
                     loading="lazy"
                     className="h-64 w-full bg-slate-100 object-contain"
                   />
-                  <figcaption className="px-6 pt-4 text-xs leading-5 text-slate-500">
+                  <figcaption className="px-6 pt-4 text-sm leading-6 text-slate-300">
                     {item.caption}
                   </figcaption>
                 </figure>
                 <div className="p-6">
                   <h3 className="text-xl font-black">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-700">
+                  <p className="mt-3 text-base leading-7 text-slate-100">
                     {item.text}
                   </p>
+                  <Link
+                    href={`/gallery?category=${encodeURIComponent(
+                      item.category,
+                    )}`}
+                    className="mt-5 inline-flex min-h-11 items-center text-sm font-bold text-gold underline"
+                  >
+                    View photographs
+                  </Link>
                 </div>
               </article>
             ))}

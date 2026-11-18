@@ -30,11 +30,11 @@ export const initiatives = [
     id: 'entrepreneurship',
     title: 'Entrepreneurship and Business Development',
     desc: 'Costs, pricing, simple records and finding customers: turning a skill into an income.',
-    image: photos.shoemaking2021,
-    imageHeight: 950,
+    image: photos.knitting1,
+    imageHeight: 2048,
     imageAlt:
-      'A Billiri newsletter spread shows carpentry, shoemaking and finished footwear.',
-    credit: archiveCredit('2021'),
+      'Learners practise at a knitting machine with a uniformed officer observing.',
+    credit: '',
     icon: 'business',
     purpose: 'entrepreneurship',
     action: 'Support Entrepreneurship',
@@ -44,11 +44,11 @@ export const initiatives = [
     id: 'community-development',
     title: 'Community Development and Livelihood Support',
     desc: 'Local partnerships that connect practical learning with community needs.',
-    image: photos.livelihoods2022,
-    imageHeight: 1070,
+    image: photos.construction4,
+    imageHeight: 1152,
     imageAlt:
-      'Billiri’s 2022 newsletter shows poultry, gardening, hand fans, barbing and electrical training.',
-    credit: archiveCredit('2022'),
+      'Learners and instructors gather beside a block foundation layout during construction training.',
+    credit: '',
     icon: 'community',
     purpose: 'community-development',
     action: 'Support Community Development',
@@ -56,14 +56,193 @@ export const initiatives = [
   },
 ];
 
+export const galleryCategories = [
+  'All',
+  'Training',
+  'Construction',
+  'Knitting',
+  'Tie-Dye',
+  'Tiling & Decorative',
+  'Workshops',
+  'Solar',
+  'Billiri Archive',
+] as const;
+
 export type GalleryItem = {
   title: string;
-  category: 'Training' | 'Workshops' | 'Solar' | 'Billiri Archive';
+  category: Exclude<(typeof galleryCategories)[number], 'All'>;
   image: string;
   caption: string;
   credit?: string;
 };
 export const galleries: GalleryItem[] = [
+  {
+    title: 'Quantity Surveying · Equipment Presentation',
+    category: 'Training',
+    image: photos.surveying8,
+    caption:
+      'A uniformed presenter addresses participants beside a table of surveying equipment.',
+  },
+  {
+    title: 'Quantity Surveying · Tools and Equipment',
+    category: 'Training',
+    image: photos.surveying9,
+    caption:
+      'Presenters stand beside equipment and a whiteboard during an outdoor surveying session.',
+  },
+  {
+    title: 'Quantity Surveying · Outdoor Discussion',
+    category: 'Training',
+    image: photos.surveying10,
+    caption:
+      'Participants in safety vests listen to a presenter in the outdoor classroom.',
+  },
+  {
+    title: 'Quantity Surveying · Whiteboard Session',
+    category: 'Training',
+    image: photos.surveying11,
+    caption:
+      'Two presenters stand beside a whiteboard during the quantity surveying training.',
+  },
+  {
+    title: 'Indoor Workshop · Classroom Learning',
+    category: 'Workshops',
+    image: photos.workshop4,
+    caption:
+      'Participants sit together as a uniformed presenter leads an indoor session.',
+  },
+  {
+    title: 'Knitting · Machine Practice',
+    category: 'Knitting',
+    image: photos.knitting1,
+    caption:
+      'Learners practise at a knitting machine with a uniformed officer observing.',
+  },
+  {
+    title: 'Knitting · Working with Yarn',
+    category: 'Knitting',
+    image: photos.knitting2,
+    caption:
+      'A learner works at the knitting machine while others watch nearby.',
+  },
+  {
+    title: 'Tie-Dye · Finished Garments',
+    category: 'Tie-Dye',
+    image: photos.tieDye4,
+    caption: 'Colourful patterned garments are displayed along a fence.',
+  },
+  {
+    title: 'Tie-Dye · Fabric Preparation',
+    category: 'Tie-Dye',
+    image: photos.tieDye8,
+    caption: 'Participants work with fabric spread out on the ground.',
+  },
+  {
+    title: 'Building Construction · Reading a Plan',
+    category: 'Construction',
+    image: photos.construction1,
+    caption: 'Learners study a building plan on a whiteboard with a presenter.',
+  },
+  {
+    title: 'Building Construction · Layout Practice',
+    category: 'Construction',
+    image: photos.construction2,
+    caption: 'A learner points to the building plan during an outdoor lesson.',
+  },
+  {
+    title: 'Building Construction · Working on Site',
+    category: 'Construction',
+    image: photos.construction3,
+    caption: 'Participants practise construction work around a block layout.',
+  },
+  {
+    title: 'Building Construction · Foundation Layout',
+    category: 'Construction',
+    image: photos.construction4,
+    caption:
+      'Learners and instructors gather beside a foundation layout marked out in blocks.',
+  },
+  {
+    title: 'Building Construction · Preparing the Ground',
+    category: 'Construction',
+    image: photos.construction5,
+    caption: 'Learners use tools on the ground beside a block wall.',
+  },
+  {
+    title: 'Building Construction · Practical Teamwork',
+    category: 'Construction',
+    image: photos.construction6,
+    caption:
+      'Learners work together around a foundation layout and string lines.',
+  },
+  {
+    title: 'Building Construction · Group Practice',
+    category: 'Construction',
+    image: photos.construction7,
+    caption: 'Participants gather around the construction practice area.',
+  },
+  {
+    title: 'Building Construction · Plans and Measurement',
+    category: 'Construction',
+    image: photos.construction8,
+    caption:
+      'A learner holds measuring equipment while the group reviews a building plan.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Opening Address',
+    category: 'Tiling & Decorative',
+    image: photos.tiling1,
+    caption:
+      'A speaker addresses attendees at the construction skills training event.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Guest Speaker',
+    category: 'Tiling & Decorative',
+    image: photos.tiling2,
+    caption:
+      'A guest speaker holds a microphone in front of the training banner.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Training Session',
+    category: 'Tiling & Decorative',
+    image: photos.tiling3,
+    caption:
+      'Participants in yellow hard hats and orange safety vests attend the indoor training event.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Programme Address',
+    category: 'Tiling & Decorative',
+    image: photos.tiling4,
+    caption:
+      'A uniformed speaker addresses attendees beside the construction training banner.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Presenter',
+    category: 'Tiling & Decorative',
+    image: photos.tiling5,
+    caption:
+      'A uniformed presenter speaks into a microphone at the training event.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Event Remarks',
+    category: 'Tiling & Decorative',
+    image: photos.tiling6,
+    caption: 'A speaker delivers remarks at the construction skills event.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Learning Together',
+    category: 'Tiling & Decorative',
+    image: photos.tiling7,
+    caption:
+      'Rows of participants in safety equipment face the presenters at the training session.',
+  },
+  {
+    title: 'Tiling and Decorative Work · Group Presentation',
+    category: 'Tiling & Decorative',
+    image: photos.tiling8,
+    caption:
+      'Uniformed representatives and attendees gather for a presentation at the event.',
+  },
   {
     title: 'Quantity Surveying · Classroom',
     category: 'Training',
@@ -112,14 +291,14 @@ export const galleries: GalleryItem[] = [
   },
   {
     title: 'Tie-Dye',
-    category: 'Training',
+    category: 'Tie-Dye',
     image: photos.tieDye,
     caption:
       'Participants work beside patterned tie-dye fabric laid out on the ground.',
   },
   {
     title: 'Tie-Dye · Finished Shirts',
-    category: 'Training',
+    category: 'Tie-Dye',
     image: photos.tieDye3,
     caption:
       'Participants stand beside a row of brightly patterned tie-dye shirts displayed along a fence.',
