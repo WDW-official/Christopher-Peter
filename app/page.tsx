@@ -30,9 +30,13 @@ export default function Home() {
               support for people in Nigeria who face barriers to those
               opportunities.
             </p>
-            <div className="action-row mt-7 flex flex-wrap gap-3">
+            <div className="hero-actions mt-7 flex gap-2 sm:flex-wrap sm:gap-3">
               <Link className="btn btn-gold" href="/our-programs">
-                Explore Our Initiatives <ArrowRight size={17} />
+                <span className="sm:hidden">Initiatives</span>
+                <span className="hidden sm:inline">
+                  Explore Our Initiatives
+                </span>
+                <ArrowRight size={17} aria-hidden="true" />
               </Link>
               <Link
                 className="btn border border-white bg-transparent text-white"

@@ -16,10 +16,10 @@ export const initiatives = [
     id: 'vocational-training',
     title: 'Vocational and Technical Skills Acquisition',
     desc: 'Hands-on learning in construction, technical trades, textiles and other crafts.',
-    image: photos.surveying3,
+    image: photos.surveying10,
     imageHeight: 1152,
     imageAlt:
-      'Participants in hard hats and safety vests attend a quantity surveying session.',
+      'Participants in safety vests listen to a presenter during an outdoor quantity surveying session.',
     credit: '',
     icon: 'tools',
     purpose: 'vocational-training',

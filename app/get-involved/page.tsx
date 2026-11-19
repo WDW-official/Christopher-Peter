@@ -56,7 +56,7 @@ export default function Page() {
               data-reveal
               id={id}
               key={id}
-              className="initiative-card flex min-w-0 scroll-mt-28 flex-col rounded-[20px] bg-navy p-6 text-white sm:p-8"
+              className="initiative-card flex min-w-0 scroll-mt-28 flex-col rounded-[20px] bg-navy p-4 text-white sm:p-8"
             >
               <Icon
                 size={37}
@@ -64,10 +64,10 @@ export default function Page() {
                 className="shrink-0 text-[#B8E986]"
                 aria-hidden="true"
               />
-              <h3 className="mt-6 text-[22px] font-black leading-snug">
+              <h3 className="mt-4 text-[22px] font-black leading-snug sm:mt-6">
                 {name}
               </h3>
-              <p className="mb-6 mt-3 text-base leading-7 text-slate-100">
+              <p className="mb-4 mt-3 text-base leading-7 text-slate-100 sm:mb-6">
                 {copy}
               </p>
               <SupportLink

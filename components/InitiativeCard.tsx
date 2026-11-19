@@ -31,7 +31,7 @@ export function InitiativeCard({
           <HandHeart size={62} strokeWidth={1.5} aria-hidden="true" />
         </div>
       )}
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
         <h3 className="flex items-start justify-between gap-4 text-xl font-extrabold leading-snug">
           {item.title}
           <ArrowUpRight

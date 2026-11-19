@@ -176,7 +176,7 @@ export default function Page() {
                   />
                 </figure>
               )}
-              <div className="max-w-3xl p-6 sm:p-8">
+              <div className="max-w-3xl p-4 sm:p-8">
                 <h3 className="initiative-title font-black">{item.title}</h3>
                 <p className="mt-4 leading-8 text-slate-100">{item.body}</p>
                 {item.credit && (
@@ -213,11 +213,11 @@ export default function Page() {
                     loading="lazy"
                     className="h-64 w-full bg-slate-100 object-contain"
                   />
-                  <figcaption className="px-6 pt-4 text-sm leading-6 text-slate-300">
+                  <figcaption className="px-4 pt-4 text-sm leading-6 text-slate-300 sm:px-6">
                     {item.caption}
                   </figcaption>
                 </figure>
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <h3 className="text-xl font-black">{item.title}</h3>
                   <p className="mt-3 text-base leading-7 text-slate-100">
                     {item.text}
@@ -318,7 +318,7 @@ export default function Page() {
                 loading="lazy"
                 className="h-64 w-full bg-cream p-4 object-contain"
               />
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <p className="eyebrow text-leaf">{item.period}</p>
                 <h3 className="mt-3 text-2xl font-black">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
@@ -351,7 +351,7 @@ export default function Page() {
               <article
                 data-reveal
                 key={title}
-                className="glass-card border-t-4 border-t-gold p-6"
+                className="glass-card border-t-4 border-t-gold p-4 sm:p-6"
               >
                 <h3 className="text-lg font-black">{title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{text}</p>

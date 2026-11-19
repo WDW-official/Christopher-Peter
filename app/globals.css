@@ -122,8 +122,8 @@ button:disabled {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(1, 21, 74, 0.08),
-    rgba(1, 21, 74, 0.28)
+    rgba(1, 21, 74, 0.14),
+    rgba(1, 21, 74, 0.32)
   );
 }
 @media (max-width: 1023px) {
@@ -140,8 +140,8 @@ button:disabled {
   }
   .hero-image::after {
     background:
-      linear-gradient(110deg, rgba(1, 21, 74, 0.93), rgba(1, 21, 74, 0.74)),
-      linear-gradient(0deg, rgba(1, 21, 74, 0.38), transparent 65%);
+      linear-gradient(110deg, rgba(1, 21, 74, 0.82), rgba(1, 21, 74, 0.68)),
+      linear-gradient(0deg, rgba(1, 21, 74, 0.3), transparent 65%);
   }
 }
 
@@ -407,6 +407,12 @@ textarea.field {
   }
   .action-row .btn {
     width: 100%;
+  }
+  .hero-actions .btn {
+    flex: 1;
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 14px;
   }
   main .btn {
     min-height: 48px;

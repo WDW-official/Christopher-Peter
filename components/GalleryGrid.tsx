@@ -95,7 +95,7 @@ export function GalleryGrid({
                 size={29}
               />
             </div>
-            <div className="p-5">
+            <div className="p-4 sm:p-5">
               <p className="eyebrow mb-2 text-gold">{item.category}</p>
               <h3 className="font-extrabold">{item.title}</h3>
               <p className="mt-3 text-base leading-7 text-slate-100">
